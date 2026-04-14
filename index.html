@@ -1,0 +1,604 @@
+{\rtf1\ansi\ansicpg950\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab560
+\pard\pardeftab560\pardirnatural\partightenfactor0
+
+\f0\b\fs40 \cf0 \
+\pard\pardeftab560\slleading20\pardirnatural\partightenfactor0
+
+\f1\b0\fs26 \cf0 \
+\pard\pardeftab560\slleading20\partightenfactor0
+\cf0 <!DOCTYPE html>\
+<html lang="zh-TW">\
+<head>\
+<meta charset="UTF-8">\
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\
+<title>\uc0\u25105 \u28310 \u20633 \u22909 \u20570 \u38651 \u21830 \u20102 \u21966 \u65311 \u65372 \u38651 \u21830 \u36215 \u27493 \u35386 \u26039 \u34920 </title>\
+<style>\
+  *, *::before, *::after \{ box-sizing: border-box; margin: 0; padding: 0; \}\
+\
+  :root \{\
+    --bg: #ffffff;\
+    --bg2: #f7f7f5;\
+    --bg3: #f0efeb;\
+    --text: #1a1a1a;\
+    --text2: #6b6b6b;\
+    --text3: #999;\
+    --border: rgba(0,0,0,0.1);\
+    --border2: rgba(0,0,0,0.2);\
+    --blue-bg: #e6f1fb;\
+    --blue-text: #0c447c;\
+    --blue-border: #378add;\
+    --green-bg: #eaf3de;\
+    --green-text: #3b6d11;\
+    --amber-bg: #faeeda;\
+    --amber-text: #854f0b;\
+    --red-bg: #fcebeb;\
+    --red-text: #a32d2d;\
+    --radius: 10px;\
+    --radius-lg: 14px;\
+  \}\
+\
+  body \{\
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;\
+    background: var(--bg2);\
+    color: var(--text);\
+    min-height: 100vh;\
+    padding: 2rem 1rem 4rem;\
+    line-height: 1.6;\
+  \}\
+\
+  .container \{\
+    max-width: 560px;\
+    margin: 0 auto;\
+  \}\
+\
+  /* Header */\
+  .page-header \{\
+    text-align: center;\
+    margin-bottom: 2.5rem;\
+  \}\
+  .brand-tag \{\
+    display: inline-block;\
+    font-size: 12px;\
+    font-weight: 500;\
+    color: var(--text3);\
+    letter-spacing: 0.06em;\
+    text-transform: uppercase;\
+    margin-bottom: 1rem;\
+  \}\
+  .page-title \{\
+    font-size: 26px;\
+    font-weight: 600;\
+    color: var(--text);\
+    margin-bottom: 10px;\
+    line-height: 1.3;\
+  \}\
+  .page-sub \{\
+    font-size: 15px;\
+    color: var(--text2);\
+    line-height: 1.7;\
+  \}\
+  .meta-row \{\
+    display: flex;\
+    justify-content: center;\
+    gap: 20px;\
+    margin-top: 16px;\
+  \}\
+  .meta-item \{\
+    font-size: 13px;\
+    color: var(--text3);\
+    display: flex;\
+    align-items: center;\
+    gap: 5px;\
+  \}\
+  .meta-dot \{\
+    width: 5px; height: 5px;\
+    border-radius: 50%;\
+    background: var(--border2);\
+  \}\
+\
+  /* Quiz area */\
+  #quiz-area \{ display: block; \}\
+  #result-area \{ display: none; \}\
+\
+  /* Question block */\
+  .q-block \{\
+    background: var(--bg);\
+    border: 0.5px solid var(--border);\
+    border-radius: var(--radius-lg);\
+    padding: 1.25rem 1.5rem;\
+    margin-bottom: 12px;\
+  \}\
+  .q-number \{\
+    font-size: 11px;\
+    font-weight: 600;\
+    color: var(--text3);\
+    text-transform: uppercase;\
+    letter-spacing: 0.06em;\
+    margin-bottom: 8px;\
+  \}\
+  .q-text \{\
+    font-size: 16px;\
+    font-weight: 500;\
+    color: var(--text);\
+    line-height: 1.5;\
+    margin-bottom: 5px;\
+  \}\
+  .q-hint \{\
+    font-size: 12px;\
+    color: var(--text3);\
+    margin-bottom: 14px;\
+    line-height: 1.4;\
+  \}\
+  .opts \{ display: flex; flex-direction: column; gap: 7px; \}\
+  .opt \{\
+    display: flex;\
+    align-items: flex-start;\
+    gap: 10px;\
+    padding: 11px 13px;\
+    border: 0.5px solid var(--border);\
+    border-radius: var(--radius);\
+    cursor: pointer;\
+    background: var(--bg);\
+    transition: border-color 0.12s, background 0.12s;\
+    -webkit-tap-highlight-color: transparent;\
+  \}\
+  .opt:hover \{ border-color: var(--border2); background: var(--bg2); \}\
+  .opt.sel \{\
+    border-color: var(--blue-border);\
+    background: var(--blue-bg);\
+  \}\
+  .opt-letter \{\
+    width: 22px; height: 22px;\
+    border-radius: 50%;\
+    border: 1px solid var(--border2);\
+    display: flex; align-items: center; justify-content: center;\
+    font-size: 11px; font-weight: 600;\
+    color: var(--text2);\
+    flex-shrink: 0;\
+    margin-top: 1px;\
+    transition: all 0.12s;\
+  \}\
+  .opt.sel .opt-letter \{\
+    background: var(--blue-border);\
+    border-color: var(--blue-border);\
+    color: white;\
+  \}\
+  .opt-text \{\
+    font-size: 14px;\
+    color: var(--text);\
+    line-height: 1.5;\
+  \}\
+  .opt.sel .opt-text \{ color: var(--blue-text); \}\
+\
+  /* Progress + submit */\
+  .bottom-bar \{\
+    background: var(--bg);\
+    border: 0.5px solid var(--border);\
+    border-radius: var(--radius-lg);\
+    padding: 1rem 1.5rem;\
+    margin-top: 8px;\
+    display: flex;\
+    align-items: center;\
+    justify-content: space-between;\
+    gap: 16px;\
+  \}\
+  .progress-wrap \{ flex: 1; \}\
+  .progress-label \{\
+    font-size: 12px;\
+    color: var(--text3);\
+    margin-bottom: 6px;\
+  \}\
+  .progress-track \{\
+    height: 3px;\
+    background: var(--bg3);\
+    border-radius: 99px;\
+    overflow: hidden;\
+  \}\
+  .progress-fill \{\
+    height: 100%;\
+    background: var(--blue-border);\
+    border-radius: 99px;\
+    transition: width 0.3s;\
+    width: 0%;\
+  \}\
+  .btn-submit \{\
+    padding: 11px 22px;\
+    background: var(--text);\
+    color: white;\
+    border: none;\
+    border-radius: var(--radius);\
+    font-size: 14px;\
+    font-weight: 500;\
+    cursor: pointer;\
+    white-space: nowrap;\
+    font-family: inherit;\
+    transition: opacity 0.12s;\
+  \}\
+  .btn-submit:hover \{ opacity: 0.85; \}\
+  .btn-submit:disabled \{\
+    opacity: 0.35;\
+    cursor: not-allowed;\
+  \}\
+\
+  /* Result */\
+  .result-card \{\
+    background: var(--bg);\
+    border: 0.5px solid var(--border);\
+    border-radius: var(--radius-lg);\
+    padding: 1.75rem 1.5rem;\
+    margin-bottom: 12px;\
+  \}\
+  .result-tag \{\
+    display: inline-block;\
+    font-size: 11px;\
+    font-weight: 600;\
+    padding: 4px 12px;\
+    border-radius: 99px;\
+    margin-bottom: 14px;\
+    letter-spacing: 0.03em;\
+  \}\
+  .tag-red \{ background: var(--red-bg); color: var(--red-text); \}\
+  .tag-amber \{ background: var(--amber-bg); color: var(--amber-text); \}\
+  .tag-green \{ background: var(--green-bg); color: var(--green-text); \}\
+\
+  .score-row \{\
+    display: flex;\
+    align-items: baseline;\
+    gap: 8px;\
+    margin-bottom: 4px;\
+  \}\
+  .score-big \{\
+    font-size: 48px;\
+    font-weight: 600;\
+    line-height: 1;\
+  \}\
+  .score-max \{\
+    font-size: 16px;\
+    color: var(--text3);\
+  \}\
+  .score-sub \{\
+    font-size: 13px;\
+    color: var(--text2);\
+    margin-bottom: 1.25rem;\
+  \}\
+  .result-title \{\
+    font-size: 18px;\
+    font-weight: 600;\
+    color: var(--text);\
+    margin-bottom: 10px;\
+    line-height: 1.4;\
+  \}\
+  .result-desc \{\
+    font-size: 14px;\
+    color: var(--text2);\
+    line-height: 1.8;\
+    margin-bottom: 1.25rem;\
+  \}\
+\
+  /* CTA box */\
+  .cta-box \{\
+    background: var(--bg2);\
+    border-radius: var(--radius);\
+    padding: 1.1rem 1.25rem;\
+    margin-bottom: 1rem;\
+  \}\
+  .cta-label \{\
+    font-size: 12px;\
+    color: var(--text3);\
+    margin-bottom: 6px;\
+    font-weight: 500;\
+    text-transform: uppercase;\
+    letter-spacing: 0.05em;\
+  \}\
+  .cta-text \{\
+    font-size: 14px;\
+    color: var(--text);\
+    line-height: 1.7;\
+    margin-bottom: 12px;\
+  \}\
+  .btn-tally \{\
+    display: block;\
+    width: 100%;\
+    padding: 13px;\
+    background: var(--text);\
+    color: white;\
+    border: none;\
+    border-radius: var(--radius);\
+    font-size: 14px;\
+    font-weight: 500;\
+    cursor: pointer;\
+    text-align: center;\
+    text-decoration: none;\
+    font-family: inherit;\
+    transition: opacity 0.12s;\
+  \}\
+  .btn-tally:hover \{ opacity: 0.85; \}\
+\
+  /* Breakdown */\
+  .breakdown-card \{\
+    background: var(--bg);\
+    border: 0.5px solid var(--border);\
+    border-radius: var(--radius-lg);\
+    padding: 1.25rem 1.5rem;\
+    margin-bottom: 12px;\
+  \}\
+  .breakdown-title \{\
+    font-size: 12px;\
+    font-weight: 600;\
+    color: var(--text3);\
+    text-transform: uppercase;\
+    letter-spacing: 0.05em;\
+    margin-bottom: 14px;\
+  \}\
+  .bd-item \{\
+    display: flex;\
+    align-items: flex-start;\
+    gap: 10px;\
+    padding: 9px 0;\
+    border-bottom: 0.5px solid var(--border);\
+  \}\
+  .bd-item:last-child \{ border-bottom: none; \}\
+  .bd-dot \{\
+    width: 8px; height: 8px;\
+    border-radius: 50%;\
+    flex-shrink: 0;\
+    margin-top: 5px;\
+  \}\
+  .dot-ok \{ background: #639922; \}\
+  .dot-mid \{ background: #ba7517; \}\
+  .dot-no \{ background: #e24b4a; \}\
+  .bd-content \{ flex: 1; \}\
+  .bd-q \{ font-size: 13px; color: var(--text2); line-height: 1.4; margin-bottom: 3px; \}\
+  .bd-a \{ font-size: 12px; color: var(--text3); line-height: 1.4; \}\
+\
+  /* Retry */\
+  .retry-btn \{\
+    display: block;\
+    width: 100%;\
+    padding: 12px;\
+    background: transparent;\
+    color: var(--text2);\
+    border: 0.5px solid var(--border);\
+    border-radius: var(--radius);\
+    font-size: 13px;\
+    cursor: pointer;\
+    text-align: center;\
+    font-family: inherit;\
+    transition: background 0.12s;\
+    margin-top: 8px;\
+  \}\
+  .retry-btn:hover \{ background: var(--bg3); \}\
+\
+  @media (max-width: 420px) \{\
+    .page-title \{ font-size: 22px; \}\
+    .score-big \{ font-size: 40px; \}\
+    .bottom-bar \{ flex-direction: column; align-items: stretch; \}\
+    .btn-submit \{ text-align: center; \}\
+  \}\
+</style>\
+</head>\
+<body>\
+<div class="container">\
+\
+  <div class="page-header">\
+    <div class="brand-tag">The Ground \uc0\u38651 \u21830 \u21855 \u21205 \u25152 </div>\
+    <h1 class="page-title">\uc0\u25105 \u28310 \u20633 \u22909 \u20570 \u38651 \u21830 \u20102 \u21966 \u65311 </h1>\
+    <p class="page-sub">7 \uc0\u38988 \u36984 \u25799 \u38988 \u65292 \u33457 \u20320  3 \u20998 \u37912 <br>\u30475 \u30475 \u20320 \u29694 \u22312 \u30340 \u38651 \u21830 \u36215 \u27493 \u28310 \u20633 \u24230 \u22312 \u21738 \u35041 </p>\
+    <div class="meta-row">\
+      <span class="meta-item">7 \uc0\u38988 </span>\
+      <span class="meta-dot"></span>\
+      <span class="meta-item">\uc0\u32004  3 \u20998 \u37912 </span>\
+      <span class="meta-dot"></span>\
+      <span class="meta-item">\uc0\u31435 \u21363 \u30475 \u32080 \u26524 </span>\
+    </div>\
+  </div>\
+\
+  <!-- Quiz -->\
+  <div id="quiz-area"></div>\
+\
+  <!-- Result -->\
+  <div id="result-area">\
+    <div class="result-card">\
+      <div id="r-tag"></div>\
+      <div class="score-row">\
+        <div class="score-big" id="r-score"></div>\
+        <div class="score-max">/ 100</div>\
+      </div>\
+      <div class="score-sub" id="r-sub"></div>\
+      <div class="result-title" id="r-title"></div>\
+      <div class="result-desc" id="r-desc"></div>\
+      <div class="cta-box">\
+        <div class="cta-label">\uc0\u24819 \u35201  1 \u23565  1 \u22238 \u39243 \u65311 </div>\
+        <div class="cta-text" id="r-cta-text"></div>\
+        <a class="btn-tally" href="https://tally.so/r/Y5MBNW" target="_blank">\uc0\u30041 \u19979 \u32879 \u32097 \u26041 \u24335 \u65292 \u38936 \u21462 \u23560 \u23660 \u22238 \u39243  \u8594 </a>\
+      </div>\
+    </div>\
+\
+    <div class="breakdown-card">\
+      <div class="breakdown-title">\uc0\u20320 \u30340 \u36880 \u38988 \u32080 \u26524 </div>\
+      <div id="r-breakdown"></div>\
+    </div>\
+\
+    <button class="retry-btn" onclick="resetQuiz()">\uc0\u37325 \u26032 \u20316 \u31572 </button>\
+  </div>\
+\
+</div>\
+\
+<script>\
+var qs = [\
+  \{\
+    t: "\uc0\u20320 \u29694 \u22312 \u33021 \u19981 \u33021 \u29992 \u19968 \u21477 \u35441 \u35498 \u28165 \u26970 \u65306 \u25105 \u30340 \u29986 \u21697 \u26159 \u36067 \u32102 \u35504 \u30340 \u65311 ",\
+    h: "\uc0\u19981 \u26159 \u12300 \u23565 \u25152 \u26377 \u20154 \u37117 \u36969 \u21512 \u12301 \u65292 \u26159 \u19968 \u20491 \u20855 \u39636 \u30340 \u20154 ",\
+    opts: [\
+      \{ l:"A", t:"\uc0\u21487 \u20197 \u65292 \u35498 \u24471 \u24456 \u28165 \u26970 \u65292 \u36899 \u23565 \u26041 \u30340 \u38656 \u27714 \u21644 \u22580 \u26223 \u37117 \u24819 \u36942 \u20102 ", s:3 \},\
+      \{ l:"B", t:"\uc0\u22823 \u27010 \u30693 \u36947 \u65292 \u20294 \u35498 \u20986 \u20358 \u26377 \u40670 \u27169 \u31946 ", s:2 \},\
+      \{ l:"C", t:"\uc0\u26377 \u24819 \u36942 \u65292 \u20294 \u27599 \u27425 \u35498 \u30340 \u29256 \u26412 \u37117 \u19981 \u22826 \u19968 \u27171 ", s:1 \},\
+      \{ l:"D", t:"\uc0\u35498 \u23526 \u35441 \u65292 \u25105 \u20197 \u28858 \u12300 \u36234 \u22810 \u20154 \u36023 \u36234 \u22909 \u12301 ", s:0 \}\
+    ]\
+  \},\
+  \{\
+    t: "\uc0\u20320 \u30340 \u23458 \u20154 \u22312 \u27770 \u23450 \u36092 \u36023 \u21069 \u65292 \u36890 \u24120 \u26371 \u21435 \u21738 \u35041 \u25628 \u23563 \u25110 \u27604 \u36611 \u65311 ",\
+    h: "\uc0\u36889 \u27770 \u23450 \u20102 \u20320 \u35201 \u22312 \u21738 \u35041 \u20986 \u29694 ",\
+    opts: [\
+      \{ l:"A", t:"\uc0\u25105 \u30693 \u36947 \u65292 \u32780 \u19988 \u25105 \u22312 \u37027 \u20123 \u22320 \u26041 \u26377 \u24067 \u23616 \u25110 \u35336 \u21123 ", s:3 \},\
+      \{ l:"B", t:"\uc0\u25105 \u29468 \u26159  Google \u25110  IG\u65292 \u20294 \u27794 \u35469 \u30495 \u30906 \u35469 \u36942 ", s:1 \},\
+      \{ l:"C", t:"\uc0\u19981 \u30906 \u23450 \u65292 \u25105 \u21482 \u22312 \u33258 \u24049 \u32722 \u24931 \u30340 \u24179 \u21488 \u30332 \u25991 ", s:1 \},\
+      \{ l:"D", t:"\uc0\u36889 \u20491 \u35282 \u24230 \u25105 \u24478 \u20358 \u27794 \u24819 \u36942 ", s:0 \}\
+    ]\
+  \},\
+  \{\
+    t: "\uc0\u20320 \u35498 \u24471 \u20986 \u20358 \u65292 \u20320 \u36319 \u36067 \u39006 \u20284 \u29986 \u21697 \u30340 \u20154 \u26368 \u19981 \u19968 \u27171 \u30340 \u26159 \u20160 \u40636 \u21966 \u65311 ",\
+    h: "\uc0\u19981 \u26159 \u12300 \u25105 \u30340 \u21697 \u36074 \u27604 \u36611 \u22909 \u12301 ",\
+    opts: [\
+      \{ l:"A", t:"\uc0\u35498 \u24471 \u20986 \u20358 \u65292 \u32780 \u19988 \u33021 \u29992 \u19968 \u21477 \u35441 \u35498 \u28165 \u26970 ", s:3 \},\
+      \{ l:"B", t:"\uc0\u26377 \u24863 \u35258 \u65292 \u20294 \u35498 \u20986 \u20358 \u22909 \u20687 \u36319 \u21029 \u20154 \u24046 \u19981 \u22810 ", s:1 \},\
+      \{ l:"C", t:"\uc0\u25105 \u30340 \u29986 \u21697 \u23601 \u26159 \u27604 \u36611 \u22909 \u65292 \u20294 \u20855 \u39636 \u21738 \u35041 \u19981 \u21516 \u35498 \u19981 \u22826 \u20986 \u20358 ", s:1 \},\
+      \{ l:"D", t:"\uc0\u36889 \u20491 \u21839 \u38988 \u35731 \u25105 \u26377 \u40670 \u21345 \u20303 ", s:0 \}\
+    ]\
+  \},\
+  \{\
+    t: "\uc0\u20320 \u36984 \u25799 \u37559 \u21806 \u24179 \u21488 \u30340 \u21407 \u22240 \u26159 \u65311 ",\
+    h: "\uc0\u24179 \u21488 \u36984 \u37679 \u65292 \u21162 \u21147 \u37117 \u22312 \u24171 \u21029 \u20154 \u25171 \u24037 ",\
+    opts: [\
+      \{ l:"A", t:"\uc0\u30740 \u31350 \u36942 \u23458 \u32676 \u32722 \u24931 \u65292 \u36984 \u36969 \u21512 \u20182 \u20497 \u21435 \u30340 \u22320 \u26041 ", s:3 \},\
+      \{ l:"B", t:"\uc0\u21443 \u32771 \u21516 \u39006 \u22411 \u21697 \u29260 \u30340 \u20570 \u27861 ", s:2 \},\
+      \{ l:"C", t:"\uc0\u30475 \u21029 \u20154 \u29992 \u35258 \u24471 \u19981 \u37679 \u23601 \u36319 \u33879 \u29992 ", s:1 \},\
+      \{ l:"D", t:"\uc0\u36996 \u27794 \u27770 \u23450 \u65292 \u25110 \u26159 \u38568 \u20415 \u36984 \u19968 \u20491 \u20808 \u35430 ", s:0 \}\
+    ]\
+  \},\
+  \{\
+    t: "\uc0\u20320 \u30340 \u23450 \u20729 \u26159 \u24590 \u40636 \u31639 \u20986 \u20358 \u30340 \u65311 ",\
+    h: "\uc0\u23450 \u20729 \u37679 \u20102 \u65292 \u36234 \u36067 \u36234 \u34407 ",\
+    opts: [\
+      \{ l:"A", t:"\uc0\u35336 \u31639 \u36942 \u25104 \u26412 \u12289 \u24066 \u22580 \u34892 \u24773 \u21644 \u30446 \u27161 \u21033 \u28516 ", s:3 \},\
+      \{ l:"B", t:"\uc0\u23565 \u29031 \u31478 \u21697 \u65292 \u35330 \u19968 \u20491 \u24863 \u35258 \u21512 \u29702 \u30340 \u25976 \u23383 ", s:2 \},\
+      \{ l:"C", t:"\uc0\u24977 \u24863 \u35258 \u65292 \u35258 \u24471 \u23458 \u20154 \u25033 \u35442 \u33021 \u25509 \u21463 ", s:1 \},\
+      \{ l:"D", t:"\uc0\u36996 \u27794 \u35469 \u30495 \u24819 \u36942 \u23450 \u20729 \u36889 \u20214 \u20107 ", s:0 \}\
+    ]\
+  \},\
+  \{\
+    t: "\uc0\u19978 \u26550 \u24460 \u21069 \u19977 \u20491 \u26376 \u65292 \u20320 \u30340 \u27969 \u37327 \u25171 \u31639 \u24478 \u21738 \u35041 \u20358 \u65311 ",\
+    h: "\uc0\u27794 \u26377 \u27969 \u37327 \u35336 \u21123 \u65292 \u31561 \u26044 \u38283 \u24215 \u19981 \u25499 \u25307 \u29260 ",\
+    opts: [\
+      \{ l:"A", t:"\uc0\u26377 \u20855 \u39636 \u35336 \u21123 \u65292 \u21253 \u21547 \u33258 \u28982 \u27969 \u37327 \u21644 \u31038 \u32676 \u31649 \u36947 ", s:3 \},\
+      \{ l:"B", t:"\uc0\u20027 \u35201 \u38752  IG \u25110 \u31038 \u32676 \u24930 \u24930 \u32047 \u31309 ", s:2 \},\
+      \{ l:"C", t:"\uc0\u25171 \u31639 \u20808 \u36305 \u24291 \u21578 \u30475 \u30475 \u25928 \u26524 ", s:1 \},\
+      \{ l:"D", t:"\uc0\u35498 \u23526 \u35441 \u36996 \u27794 \u24819 \u28165 \u26970 \u36889 \u20214 \u20107 ", s:0 \}\
+    ]\
+  \},\
+  \{\
+    t: "\uc0\u22914 \u26524 \u19978 \u26550 \u20841 \u20491 \u26376 \u37117 \u27794 \u35330 \u21934 \u65292 \u20320 \u30693 \u36947 \u35201 \u21435 \u21738 \u35041 \u25214 \u21839 \u38988 \u21966 \u65311 ",\
+    h: "\uc0\u36889 \u38988 \u28204 \u30340 \u26159 \u20320 \u26377 \u27794 \u26377 \u33258 \u25105 \u35386 \u26039 \u30340 \u33021 \u21147 ",\
+    opts: [\
+      \{ l:"A", t:"\uc0\u30693 \u36947 \u65292 \u25105 \u26371 \u24478 \u27969 \u37327 \u20358 \u28304 \u21644 \u29986 \u21697 \u38913 \u38283 \u22987 \u30475 ", s:3 \},\
+      \{ l:"B", t:"\uc0\u22823 \u27010 \u30693 \u36947 \u26041 \u21521 \u65292 \u20294 \u27794 \u26377 \u20855 \u39636 \u26041 \u27861 ", s:2 \},\
+      \{ l:"C", t:"\uc0\u21487 \u33021 \u26371 \u20808 \u21839 \u26379 \u21451 \u25110 \u20098 \u35430 \u30475 \u30475 ", s:1 \},\
+      \{ l:"D", t:"\uc0\u35498 \u23526 \u35441 \u25105 \u19981 \u30693 \u36947 \u24478 \u21738 \u35041 \u19979 \u25163 ", s:0 \}\
+    ]\
+  \}\
+];\
+\
+var answers = new Array(qs.length).fill(null);\
+\
+function buildQuiz() \{\
+  var area = document.getElementById('quiz-area');\
+  area.innerHTML = '';\
+  qs.forEach(function(q, qi) \{\
+    var block = document.createElement('div');\
+    block.className = 'q-block';\
+    var html = '<div class="q-number">\uc0\u31532  ' + (qi+1) + ' \u38988  / ' + qs.length + '</div>';\
+    html += '<div class="q-text">' + q.t + '</div>';\
+    html += '<div class="q-hint">' + q.h + '</div>';\
+    html += '<div class="opts">';\
+    q.opts.forEach(function(o, oi) \{\
+      html += '<div class="opt" id="opt-'+qi+'-'+oi+'" onclick="pick('+qi+','+oi+')">';\
+      html += '<div class="opt-letter">'+o.l+'</div>';\
+      html += '<div class="opt-text">'+o.t+'</div></div>';\
+    \});\
+    html += '</div>';\
+    block.innerHTML = html;\
+    area.appendChild(block);\
+  \});\
+\
+  var bar = document.createElement('div');\
+  bar.className = 'bottom-bar';\
+  bar.innerHTML = '<div class="progress-wrap"><div class="progress-label" id="prog-label">\uc0\u24050 \u20316 \u31572  0 / ' + qs.length + ' \u38988 </div><div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div></div><button class="btn-submit" id="btn-submit" onclick="showResult()" disabled>\u30475 \u25105 \u30340 \u32080 \u26524  \u8594 </button>';\
+  area.appendChild(bar);\
+\}\
+\
+function pick(qi, oi) \{\
+  var grp = document.querySelectorAll('[id^="opt-'+qi+'-"]');\
+  grp.forEach(function(el) \{ el.classList.remove('sel'); \});\
+  document.getElementById('opt-'+qi+'-'+oi).classList.add('sel');\
+  answers[qi] = \{ score: qs[qi].opts[oi].s, text: qs[qi].opts[oi].t \};\
+  var filled = answers.filter(function(a)\{ return a !== null; \}).length;\
+  document.getElementById('prog-label').textContent = '\uc0\u24050 \u20316 \u31572  ' + filled + ' / ' + qs.length + ' \u38988 ';\
+  document.getElementById('prog-fill').style.width = Math.round(filled/qs.length*100) + '%';\
+  document.getElementById('btn-submit').disabled = (filled < qs.length);\
+\}\
+\
+function showResult() \{\
+  var total = answers.reduce(function(a,b)\{ return a + b.score; \}, 0);\
+  var max = qs.length * 3;\
+  var pct = Math.round(total / max * 100);\
+\
+  document.getElementById('quiz-area').style.display = 'none';\
+  document.getElementById('result-area').style.display = 'block';\
+\
+  document.getElementById('r-score').textContent = pct;\
+  document.getElementById('r-sub').textContent = '\uc0\u28415 \u20998  100 \u20998 \u65372 \u20849  ' + qs.length + ' \u38988 ';\
+\
+  var tag, title, desc, cta;\
+  if (pct <= 40) \{\
+    tag = '<div class="result-tag tag-red">\uc0\u22320 \u22522 \u36996 \u27794 \u25171 \u22909 </div>';\
+    title = '\uc0\u20808 \u20572 \u19979 \u20358 \u65292 \u25226 \u36889 \u24190 \u20214 \u20107 \u24819 \u28165 \u26970 \u20877 \u21205 ';\
+    desc = '\uc0\u24456 \u22810 \u20154 \u22312 \u36889 \u20491 \u38542 \u27573 \u30452 \u25509 \u34909 \u21435 \u19978 \u26550 \u65292 \u32080 \u26524 \u33457 \u20102 \u37666 \u21644 \u26178 \u38291 \u65292 \u25165 \u30332 \u29694 \u26041 \u21521 \u19981 \u23565 \u12290 \u20320 \u29694 \u22312 \u26377 \u27231 \u26371 \u22312 \u38283 \u22987 \u20043 \u21069 \u25226 \u22320 \u22522 \u33995 \u31337 \'97\'97\u36889 \u19981 \u26159 \u24930 \u65292 \u26159 \u30495 \u30340 \u27604 \u36611 \u24555 \u12290 ';\
+    cta = '\uc0\u25226 \u20320 \u30340 \u32080 \u26524 \u30041 \u32102 \u25105 \u65292 \u25105 \u21578 \u35380 \u20320 \u24478 \u21738 \u19968 \u20214 \u20107 \u38283 \u22987 \u26368 \u26377 \u25928 \u29575 \u65292 \u24171 \u20320 \u23569 \u36208 \u19977 \u24180 \u24398 \u36335 \u12290 ';\
+  \} else if (pct <= 70) \{\
+    tag = '<div class="result-tag tag-amber">\uc0\u26377 \u22312 \u28310 \u20633 \u65292 \u20294 \u26377 \u32570 \u21475 </div>';\
+    title = '\uc0\u26041 \u21521 \u23565 \u20102 \u65292 \u26377 \u24190 \u20491 \u27934 \u38656 \u35201 \u22312 \u19978 \u26550 \u21069 \u35036 \u36215 \u20358 ';\
+    desc = '\uc0\u20320 \u24050 \u32147 \u24819 \u20102 \u19981 \u23569 \u65292 \u20294 \u24190 \u20491 \u27794 \u31572 \u22909 \u30340 \u22320 \u26041 \u24456 \u21487 \u33021 \u22312 \u19978 \u26550 \u24460 \u35722 \u25104 \u21345 \u38364 \u40670 \u12290 \u29694 \u22312 \u35036 \u65292 \u27604 \u19978 \u26550 \u24460 \u25165 \u30332 \u29694 \u22909 \u34389 \u29702 \u24471 \u22810 \u12290 ';\
+    cta = '\uc0\u30041 \u19979 \u32879 \u32097 \u26041 \u24335 \u65292 \u25105 \u24171 \u20320 \u30475 \u21738 \u20491 \u32570 \u21475 \u26368 \u20540 \u24471 \u20808 \u35036 \u65292 \u32102 \u20320 \u20855 \u39636 \u30340 \u25991 \u23383 \u24314 \u35696 \u12290 ';\
+  \} else \{\
+    tag = '<div class="result-tag tag-green">\uc0\u28310 \u20633 \u24230 \u19981 \u37679 </div>';\
+    title = '\uc0\u20320 \u27604 \u22823 \u22810 \u25976 \u26032 \u25163 \u24819 \u24471 \u26356 \u28165 \u26970 ';\
+    desc = '\uc0\u36889 \u24190 \u20214 \u20107 \u20320 \u37117 \u26377 \u24819 \u36942 \u65292 \u20195 \u34920 \u20320 \u30340 \u36215 \u40670 \u27604 \u22823 \u37096 \u20998 \u20154 \u31337 \u12290 \u25509 \u19979 \u20358 \u30340 \u21839 \u38988 \u19981 \u26159 \u26377 \u27794 \u26377 \u28310 \u20633 \u22909 \u65292 \u32780 \u26159 \u24590 \u40636 \u25226 \u36889 \u20123 \u33853 \u22320 \u25104 \u30495 \u27491 \u30340 \u34892 \u21205 \u12290 ';\
+    cta = '\uc0\u30041 \u19979 \u32879 \u32097 \u26041 \u24335 \u65292 \u25105 \u20497 \u21487 \u20197 \u32842 \u32842 \u20320 \u30340 \u31532 \u19968 \u27493 \u20855 \u39636 \u24590 \u40636 \u36208 \u26368 \u26377 \u25928 \u12290 ';\
+  \}\
+\
+  document.getElementById('r-tag').innerHTML = tag;\
+  document.getElementById('r-title').textContent = title;\
+  document.getElementById('r-desc').textContent = desc;\
+  document.getElementById('r-cta-text').textContent = cta;\
+\
+  var bd = document.getElementById('r-breakdown');\
+  bd.innerHTML = '';\
+  qs.forEach(function(q, i) \{\
+    var a = answers[i];\
+    var dc = a.score === 3 ? 'dot-ok' : (a.score >= 1 ? 'dot-mid' : 'dot-no');\
+    var el = document.createElement('div');\
+    el.className = 'bd-item';\
+    el.innerHTML = '<div class="bd-dot ' + dc + '"></div><div class="bd-content"><div class="bd-q">' + q.t + '</div><div class="bd-a">\uc0\u20320 \u30340 \u36984 \u25799 \u65306 ' + a.text + '</div></div>';\
+    bd.appendChild(el);\
+  \});\
+\
+  window.scrollTo(\{ top: 0, behavior: 'smooth' \});\
+\}\
+\
+function resetQuiz() \{\
+  answers = new Array(qs.length).fill(null);\
+  document.getElementById('result-area').style.display = 'none';\
+  document.getElementById('quiz-area').style.display = 'block';\
+  buildQuiz();\
+  window.scrollTo(\{ top: 0, behavior: 'smooth' \});\
+\}\
+\
+buildQuiz();\
+</script>\
+</body>\
+</html>}
